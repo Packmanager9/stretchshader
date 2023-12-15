@@ -1844,61 +1844,6 @@ let l = new LinkUp()
 
 
 
-class LineBox {
-    constructor(){
-
-
-         this.strs = "What the fuck did you just fucking say about me, you little bitch? I'll have you know I graduated top of my class in the Navy Seals, and I've been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I'm the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You're fucking dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that's just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit. If only you could have known what unholy retribution your little clever comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn't, you didn't, and now you're paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You're fucking dead, kiddo."
-        this.strs = this.strs.split('.')
-        this.text = 'Glass of milk, fish sandwich.'
-        this.center = new Circle(180,180, 10, "red")
-        this.target = l.points[1]
-        this.canvas = document.createElement("CANVAS");
-        this.canvas.width = 3200
-        this.canvas.height = 320
-        this.canvas_context = this.canvas.getContext('2d');
-        this.whack = 0
-        this.t = 0
-        this.k = 0
-    }
-    draw(){
-        this.k++
-        if(this.k > 100){
-            this.k =0 
-            this.t +=1
-            this.t = Math.min(this.t, this.strs.length-1)
-        }
-        if(keysPressed['t']){
-            this.whack++
-        }
-        if(keysPressed['f']){
-            this.whack--
-        }
-        this.center = l.points[0]
-            this.link = new LineOP(this.center, l.points[1], "Black", 2)
-            // this.link.draw()
-            this.canvas_context.clearRect(0,0,3200,320)
-            this.canvas_context.fillStyle = getRandomLightColor()
-            this.canvas_context.strokeStyle = getRandomDarkColor()
-            this.canvas_context.lineWidth = 1
-            this.canvas_context.font = "10px arial"
-            this.textWidth = this.canvas_context.measureText(this.text).width*.5
-            let x = ((this.link.target.x+this.link.object.x)/2) 
-            let y =  (((this.link.target.y+this.link.object.y)/2))
-            this.canvas_context.fillText( this.strs[this.t], ((x) - ((this.link.hypotenuse()*.5)+(this.textWidth)))+200   ,y+1)
-            this.canvas_context.strokeText( this.strs[this.t], ((x) - ((this.link.hypotenuse()*.5)+(this.textWidth)))+200   ,y+1)
-            canvas_context.translate(x,y);
-            canvas_context.rotate(this.link.angle());
-            canvas_context.translate(-x,-y);
-            canvas_context.drawImage(this.canvas, 0, 0, this.canvas.width, this.canvas.height, -200, 0,3200,320)
-            canvas_context.translate(x,y);
-            canvas_context.rotate(-this.link.angle());
-            canvas_context.translate(-x,-y);
-    }
-}
-
-let fs = new LineBox()
-
 
 function main() {
     // canvas_context.clearRect(0, 0, canvas.width, canvas.height)  // refreshes the image
